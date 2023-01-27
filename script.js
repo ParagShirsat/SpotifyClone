@@ -2,7 +2,7 @@ console.log("Welcome to Spotify");
 
 // Initialize the Variables
 let songIndex = 0;
-let audioElement = new Audio('C:/Users/PARAG/Desktop/project/1.mp3');
+let audioElement = new Audio('songs/1.mp3');
 let masterPlay = document.getElementById('masterPlay');
 let myProgressBar = document.getElementById('myProgressBar');
 let gif = document.getElementById('gif');
@@ -10,15 +10,17 @@ let masterSongName = document.getElementById('masterSongName');
 let songItems = Array.from(document.getElementsByClassName('songItem'));
 
 let songs = [
-    {songName: "1.Beliver", filePath:"C:/Users/PARAG/Desktop/project/1.mp3"},
-    {songName: "2.Champion - Dwayne DJ Bravo", filePath: "C:/Users/PARAG/Desktop/project/2.mp3"},
-    {songName: "3.Muqabla - Street Dancer 3D",filePath:"C:/Users/PARAG/Desktop/project/3.mp3"},
-    {songName: "4.ICC Mens T20 World Cup 2021 Official Anthem - Live The Game", filePath: "C:/Users/PARAG/Desktop/project/4.mp3" },
-    {songName: "5.Elektronomia_Sky_High", filePath: "C:/Users/PARAG/Desktop/project/5.mp3"},
-    {songName: "6.Coca Cola - Luka Chuppi", filePath: "C:/Users/PARAG/Desktop/project/6.mp3"},
+    {songName: "1.Beliver", filePath: "songs/1.mp3"},
+    {songName: "2.Champion - Dwayne DJ Bravo", filePath: "songs/2.mp3"},
+    {songName: "3.Coca Cola - Luka Chuppi", filePath: "songs/3.mp3"},
+    {songName: "4.Elektronomia_Sky_High", filePath: "songs/4.mp3"},
+    {songName: "5.ICC Mens T20 World Cup 2021 Official Anthem - Live The Game", filePath: "songs/5.mp3"},
+    {songName: "6.Muqabla - Street Dancer 3D", filePath: "songs/6.mp3"},
+    
 ]
 
 songItems.forEach((element, i)=>{ 
+    
     element.getElementsByClassName("songName")[0].innerText = songs[i].songName; 
 })
  
@@ -62,7 +64,7 @@ Array.from(document.getElementsByClassName('songItemPlay')).forEach((element)=>{
         songIndex = parseInt(e.target.id);
         e.target.classList.remove('fa-play-circle');
         e.target.classList.add('fa-pause-circle');
-        audioElement.src = 'C:/Users/PARAG/Desktop/project/${songIndex+1}.mp3';
+        audioElement.src = `songs/${songIndex+1}.mp3`;
         masterSongName.innerText = songs[songIndex].songName;
         audioElement.currentTime = 0;
         audioElement.play();
@@ -73,13 +75,13 @@ Array.from(document.getElementsByClassName('songItemPlay')).forEach((element)=>{
 })
 
 document.getElementById('next').addEventListener('click', ()=>{
-    if(songIndex>=7){
+    if(songIndex>=9){
         songIndex = 0
     }
     else{
         songIndex += 1;
     }
-    audioElement.src ='C:/Users/PARAG/Desktop/project/${songIndex+1}.mp3';
+    audioElement.src = `songs/${songIndex+1}.mp3`;
     masterSongName.innerText = songs[songIndex].songName;
     audioElement.currentTime = 0;
     audioElement.play();
@@ -95,7 +97,7 @@ document.getElementById('previous').addEventListener('click', ()=>{
     else{
         songIndex -= 1;
     }
-    audioElement.src = 'C:/Users/PARAG/Desktop/project/${songIndex+1}.mp3';
+    audioElement.src = `songs/${songIndex+1}.mp3`;
     masterSongName.innerText = songs[songIndex].songName;
     audioElement.currentTime = 0;
     audioElement.play();
